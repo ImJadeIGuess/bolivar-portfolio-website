@@ -1,0 +1,345 @@
+/**
+ * Projects Section Styles
+ * Grid layout with hover animations
+ */
+
+/* ===========================================
+   PROJECTS SECTION BASE
+   =========================================== */
+
+.projects {
+  background-color: var(--bg-secondary);
+}
+
+[data-theme="dark"] .projects {
+  background-color: var(--bg-primary);
+}
+
+/* ==SECTION HEADER==*/
+
+.section-header {
+  text-align: center;
+}
+
+/*filter*/
+
+.projects-filter {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-12);
+  flex-wrap: wrap;
+}
+
+/*loading*/
+
+.projects-loading {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+}
+
+.project-skeleton {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.skeleton-image {
+  height: 200px;
+}
+
+.skeleton-content {
+  padding: var(--space-6);
+}
+
+.skeleton-title {
+  height: 24px;
+  width: 60%;
+  margin-bottom: var(--space-4);
+}
+
+.skeleton-text {
+  height: 16px;
+  width: 100%;
+  margin-bottom: var(--space-2);
+}
+
+/*grid of prohects*/
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+}
+
+/*project holder card*/
+
+.project-card {
+  position: relative;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-2xl);
+}
+
+/*project image (assets) */
+
+.project-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.1);
+}
+
+/* Overlay on hover */
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    transparent 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: var(--space-6);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+/* Project Links */
+.project-links {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.project-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.project-card:hover .project-link {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.project-card:hover .project-link:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.project-link:hover {
+  background-color: var(--color-accent);
+  color: var(--bg-primary);
+  transform: scale(1.1);
+}
+
+/*content or description of the project*/
+
+.project-content {
+  padding: var(--space-6);
+}
+
+/* category */
+.project-category {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  color: var(--color-accent);
+  background-color: rgba(100, 255, 218, 0.1);
+  border-radius: var(--radius-full);
+  text-transform: capitalize;
+  margin-bottom: var(--space-3);
+}
+
+/* my title */
+.project-title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+  transition: color var(--transition-fast);
+}
+
+.project-card:hover .project-title {
+  color: var(--color-primary);
+}
+
+/* description */
+.project-description {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-4);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* TechStack */
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tech-tag {
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  color: var(--text-tertiary);
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.tech-tag:hover {
+  color: var(--color-accent);
+  background-color: rgba(100, 255, 218, 0.1);
+}
+
+.tech-tag.more {
+  color: var(--text-tertiary);
+}
+
+/*star logo*/
+
+.featured-badge {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  background-color: var(--color-primary);
+  color: white;
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-full);
+  z-index: 1;
+}
+
+.featured-badge svg {
+  color: #fbbf24;
+}
+
+/*empty projects*/
+
+.projects-empty {
+  text-align: center;
+  padding: var(--space-16) 0;
+  color: var(--text-tertiary);
+}
+
+.projects-empty svg {
+  margin: 0 auto var(--space-4);
+  opacity: 0.5;
+}
+
+.projects-empty p {
+  font-size: var(--text-lg);
+}
+
+/* view more CTA (call to action) */
+
+.projects-cta {
+  text-align: center;
+  margin-top: var(--space-12);
+}
+
+/*responsive anim*/
+
+@media (max-width: 1024px) {
+  .projects-grid,
+  .projects-loading {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-grid,
+  .projects-loading {
+    grid-template-columns: 1fr;
+  }
+  
+  .projects-filter {
+    gap: var(--space-2);
+  }
+  
+  .filter-btn {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .project-content {
+    padding: var(--space-4);
+  }
+  
+  .project-title {
+    font-size: var(--text-lg);
+  }
+}
+
+/* animations */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .project-card {
+    animation: none;
+    opacity: 1;
+  }
+  
+  .project-image,
+  .project-card,
+  .project-link {
+    transition: none;
+  }
+}
