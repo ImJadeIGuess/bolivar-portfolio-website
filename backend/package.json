@@ -14,7 +14,7 @@
     "express",
     "mongodb"
   ],
-  "author": "Your Name",
+  "author": "Jaderick Bordones Bolivar",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
